@@ -1,8 +1,11 @@
+db:
+	docker compose up -d
+
 createdb:
-	docker exec -it postgres createdb --username root simple_bank
+	docker exec -it simplebank-db-1 createdb --username root simple_bank
 
 dropdb:
-	docker exec -it postgres dropdb --username root simple_bank
+	docker exec -it simplebank-db-1 dropdb --username root simple_bank
 
 migrateup:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
@@ -16,4 +19,7 @@ sqlc:
 test:
 	go test -v -cover ./...
 
-.PHONY: createdb migrateup migratedown sqlc
+server:
+	go run .
+
+.PHONY: db createdb migrateup migratedown sqlc

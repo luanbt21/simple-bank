@@ -22,4 +22,7 @@ test:
 server:
 	go run .
 
-.PHONY: db createdb migrateup migratedown sqlc
+mock:
+	go generate ./...
+
+.PHONY: db createdb migrateup migratedown sqlc mock

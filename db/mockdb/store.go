@@ -492,21 +492,21 @@ func (_c *Store_ListAccounts_Call) RunAndReturn(run func(context.Context, db.Lis
 }
 
 // TransferTx provides a mock function with given fields: ctx, arg
-func (_m *Store) TransferTx(ctx context.Context, arg db.TransferTxParam) (db.TransferTxResult, error) {
+func (_m *Store) TransferTx(ctx context.Context, arg db.TransferTxParams) (db.TransferTxResult, error) {
 	ret := _m.Called(ctx, arg)
 
 	var r0 db.TransferTxResult
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, db.TransferTxParam) (db.TransferTxResult, error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, db.TransferTxParams) (db.TransferTxResult, error)); ok {
 		return rf(ctx, arg)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, db.TransferTxParam) db.TransferTxResult); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, db.TransferTxParams) db.TransferTxResult); ok {
 		r0 = rf(ctx, arg)
 	} else {
 		r0 = ret.Get(0).(db.TransferTxResult)
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, db.TransferTxParam) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, db.TransferTxParams) error); ok {
 		r1 = rf(ctx, arg)
 	} else {
 		r1 = ret.Error(1)
@@ -522,14 +522,14 @@ type Store_TransferTx_Call struct {
 
 // TransferTx is a helper method to define mock.On call
 //   - ctx context.Context
-//   - arg db.TransferTxParam
+//   - arg db.TransferTxParams
 func (_e *Store_Expecter) TransferTx(ctx interface{}, arg interface{}) *Store_TransferTx_Call {
 	return &Store_TransferTx_Call{Call: _e.mock.On("TransferTx", ctx, arg)}
 }
 
-func (_c *Store_TransferTx_Call) Run(run func(ctx context.Context, arg db.TransferTxParam)) *Store_TransferTx_Call {
+func (_c *Store_TransferTx_Call) Run(run func(ctx context.Context, arg db.TransferTxParams)) *Store_TransferTx_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(db.TransferTxParam))
+		run(args[0].(context.Context), args[1].(db.TransferTxParams))
 	})
 	return _c
 }
@@ -539,7 +539,7 @@ func (_c *Store_TransferTx_Call) Return(_a0 db.TransferTxResult, _a1 error) *Sto
 	return _c
 }
 
-func (_c *Store_TransferTx_Call) RunAndReturn(run func(context.Context, db.TransferTxParam) (db.TransferTxResult, error)) *Store_TransferTx_Call {
+func (_c *Store_TransferTx_Call) RunAndReturn(run func(context.Context, db.TransferTxParams) (db.TransferTxResult, error)) *Store_TransferTx_Call {
 	_c.Call.Return(run)
 	return _c
 }

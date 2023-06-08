@@ -9,7 +9,7 @@ import (
 //go:generate mockery --output ../mockdb --outpkg mockdb --filename store.go --name Store
 type Store interface {
 	Querier
-	TransferTx(ctx context.Context, arg TransferTxParam) (TransferTxResult, error)
+	TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error)
 }
 
 type SQLStore struct {
@@ -42,7 +42,7 @@ func (store *SQLStore) execTx(ctx context.Context, fn func(*Queries) error) erro
 	return tx.Commit()
 }
 
-type TransferTxParam struct {
+type TransferTxParams struct {
 	FromAccountID int64 `json:"fromAccountId"`
 	ToAccountID   int64 `json:"toAccountId"`
 	Amount        int64 `json:"amount"`
@@ -56,7 +56,7 @@ type TransferTxResult struct {
 	ToEntry     Entry    `json:"toEntry"`
 }
 
-func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParam) (TransferTxResult, error) {
+func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error) {
 	var result TransferTxResult
 
 	err := store.execTx(ctx, func(q *Queries) error {

@@ -234,6 +234,59 @@ func (_c *Store_CreateTransfer_Call) RunAndReturn(run func(context.Context, db.C
 	return _c
 }
 
+// CreateUser provides a mock function with given fields: ctx, arg
+func (_m *Store) CreateUser(ctx context.Context, arg db.CreateUserParams) (db.User, error) {
+	ret := _m.Called(ctx, arg)
+
+	var r0 db.User
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, db.CreateUserParams) (db.User, error)); ok {
+		return rf(ctx, arg)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, db.CreateUserParams) db.User); ok {
+		r0 = rf(ctx, arg)
+	} else {
+		r0 = ret.Get(0).(db.User)
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, db.CreateUserParams) error); ok {
+		r1 = rf(ctx, arg)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// Store_CreateUser_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateUser'
+type Store_CreateUser_Call struct {
+	*mock.Call
+}
+
+// CreateUser is a helper method to define mock.On call
+//   - ctx context.Context
+//   - arg db.CreateUserParams
+func (_e *Store_Expecter) CreateUser(ctx interface{}, arg interface{}) *Store_CreateUser_Call {
+	return &Store_CreateUser_Call{Call: _e.mock.On("CreateUser", ctx, arg)}
+}
+
+func (_c *Store_CreateUser_Call) Run(run func(ctx context.Context, arg db.CreateUserParams)) *Store_CreateUser_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(db.CreateUserParams))
+	})
+	return _c
+}
+
+func (_c *Store_CreateUser_Call) Return(_a0 db.User, _a1 error) *Store_CreateUser_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *Store_CreateUser_Call) RunAndReturn(run func(context.Context, db.CreateUserParams) (db.User, error)) *Store_CreateUser_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteAccount provides a mock function with given fields: ctx, id
 func (_m *Store) DeleteAccount(ctx context.Context, id int64) error {
 	ret := _m.Called(ctx, id)
@@ -273,6 +326,49 @@ func (_c *Store_DeleteAccount_Call) Return(_a0 error) *Store_DeleteAccount_Call 
 }
 
 func (_c *Store_DeleteAccount_Call) RunAndReturn(run func(context.Context, int64) error) *Store_DeleteAccount_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteUser provides a mock function with given fields: ctx, username
+func (_m *Store) DeleteUser(ctx context.Context, username string) error {
+	ret := _m.Called(ctx, username)
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(context.Context, string) error); ok {
+		r0 = rf(ctx, username)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
+}
+
+// Store_DeleteUser_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteUser'
+type Store_DeleteUser_Call struct {
+	*mock.Call
+}
+
+// DeleteUser is a helper method to define mock.On call
+//   - ctx context.Context
+//   - username string
+func (_e *Store_Expecter) DeleteUser(ctx interface{}, username interface{}) *Store_DeleteUser_Call {
+	return &Store_DeleteUser_Call{Call: _e.mock.On("DeleteUser", ctx, username)}
+}
+
+func (_c *Store_DeleteUser_Call) Run(run func(ctx context.Context, username string)) *Store_DeleteUser_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *Store_DeleteUser_Call) Return(_a0 error) *Store_DeleteUser_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *Store_DeleteUser_Call) RunAndReturn(run func(context.Context, string) error) *Store_DeleteUser_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -436,6 +532,59 @@ func (_c *Store_GetTransfer_Call) RunAndReturn(run func(context.Context, int64) 
 	return _c
 }
 
+// GetUser provides a mock function with given fields: ctx, username
+func (_m *Store) GetUser(ctx context.Context, username string) (db.User, error) {
+	ret := _m.Called(ctx, username)
+
+	var r0 db.User
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, string) (db.User, error)); ok {
+		return rf(ctx, username)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, string) db.User); ok {
+		r0 = rf(ctx, username)
+	} else {
+		r0 = ret.Get(0).(db.User)
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, string) error); ok {
+		r1 = rf(ctx, username)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// Store_GetUser_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetUser'
+type Store_GetUser_Call struct {
+	*mock.Call
+}
+
+// GetUser is a helper method to define mock.On call
+//   - ctx context.Context
+//   - username string
+func (_e *Store_Expecter) GetUser(ctx interface{}, username interface{}) *Store_GetUser_Call {
+	return &Store_GetUser_Call{Call: _e.mock.On("GetUser", ctx, username)}
+}
+
+func (_c *Store_GetUser_Call) Run(run func(ctx context.Context, username string)) *Store_GetUser_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *Store_GetUser_Call) Return(_a0 db.User, _a1 error) *Store_GetUser_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *Store_GetUser_Call) RunAndReturn(run func(context.Context, string) (db.User, error)) *Store_GetUser_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListAccounts provides a mock function with given fields: ctx, arg
 func (_m *Store) ListAccounts(ctx context.Context, arg db.ListAccountsParams) ([]db.Account, error) {
 	ret := _m.Called(ctx, arg)
@@ -487,6 +636,61 @@ func (_c *Store_ListAccounts_Call) Return(_a0 []db.Account, _a1 error) *Store_Li
 }
 
 func (_c *Store_ListAccounts_Call) RunAndReturn(run func(context.Context, db.ListAccountsParams) ([]db.Account, error)) *Store_ListAccounts_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListUsers provides a mock function with given fields: ctx, arg
+func (_m *Store) ListUsers(ctx context.Context, arg db.ListUsersParams) ([]db.User, error) {
+	ret := _m.Called(ctx, arg)
+
+	var r0 []db.User
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, db.ListUsersParams) ([]db.User, error)); ok {
+		return rf(ctx, arg)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, db.ListUsersParams) []db.User); ok {
+		r0 = rf(ctx, arg)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).([]db.User)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, db.ListUsersParams) error); ok {
+		r1 = rf(ctx, arg)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// Store_ListUsers_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListUsers'
+type Store_ListUsers_Call struct {
+	*mock.Call
+}
+
+// ListUsers is a helper method to define mock.On call
+//   - ctx context.Context
+//   - arg db.ListUsersParams
+func (_e *Store_Expecter) ListUsers(ctx interface{}, arg interface{}) *Store_ListUsers_Call {
+	return &Store_ListUsers_Call{Call: _e.mock.On("ListUsers", ctx, arg)}
+}
+
+func (_c *Store_ListUsers_Call) Run(run func(ctx context.Context, arg db.ListUsersParams)) *Store_ListUsers_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(db.ListUsersParams))
+	})
+	return _c
+}
+
+func (_c *Store_ListUsers_Call) Return(_a0 []db.User, _a1 error) *Store_ListUsers_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *Store_ListUsers_Call) RunAndReturn(run func(context.Context, db.ListUsersParams) ([]db.User, error)) *Store_ListUsers_Call {
 	_c.Call.Return(run)
 	return _c
 }
